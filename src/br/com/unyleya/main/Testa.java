@@ -8,7 +8,29 @@ import br.com.unyleya.modelo.Pessoa;
 public class Testa {
 
 	public static void main(String[] args) {
+		int value;
 
+		do {
+			value = Integer.parseInt(JOptionPane.showInputDialog("Digite:\n 1 para cadastrar \n 2 para buscar"));
+
+			switch (value) {
+			case 1:
+				System.out.println("Entrou no metodo cadastrar");
+				new Testa().cadastrar();
+				break;
+			case 2:
+				System.out.println("Entrou no metodo buscar");
+				new Testa().buscar();
+			default:
+				JOptionPane.showMessageDialog(null, "FIM!");
+				break;
+			}
+
+		} while (value == 1 || value == 2);
+
+	}
+
+	public void cadastrar() {
 		String nome = JOptionPane.showInputDialog("Informe seu Nome:");
 		int idade = Integer.parseInt(JOptionPane.showInputDialog("Informe sua Idade:"));
 		String endereco = JOptionPane.showInputDialog("Informe seu Endereço:");
@@ -20,6 +42,24 @@ public class Testa {
 
 		PessoaController controller = new PessoaController();
 		controller.salvar(pessoa);
+	}
+
+	public void buscar() {
+		int id = Integer.parseInt(JOptionPane.showInputDialog("Informe o ID:"));
+		System.out.println("Buscando Id: " + id);
+
+		PessoaController controller = new PessoaController();
+		Pessoa pessoa = controller.listaPessoaPorId(id);
+
+		StringBuilder builder = new StringBuilder();
+		builder.append("ID: " + pessoa.getId());
+		builder.append("\nNome: " + pessoa.getNome());
+		builder.append("\nIdade: " + pessoa.getIdade() + " anos");
+		builder.append("\nEndereço: " + pessoa.getEndereco());
+
+		JOptionPane.showMessageDialog(null, builder);
+		System.out.println(pessoa);
+
 	}
 
 }
