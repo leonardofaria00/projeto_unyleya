@@ -11,16 +11,19 @@ public class Testa {
 
 		do {
 			value = Integer.parseInt(
-					JOptionPane.showInputDialog("Digite:\n1 Cadastrar \n2 Buscar por id \n3 Listar todos \n0 sair"));
+					JOptionPane.showInputDialog("Digite:\n1 Cadastrar \n2 Listar todos \n3 Buscar por id \n0 sair"));
 
 			switch (value) {
 			case 1:
 				new Pessoa().cadastrar();
 				break;
 			case 2:
-				new Pessoa().listaPorId();
+				new Pessoa().getPessoas();
 				break;
 			case 3:
+				new Pessoa().listaPorId();
+				break;
+			case 4:
 				new Pessoa().getPessoas();
 				break;
 			default:
