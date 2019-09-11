@@ -11,15 +11,14 @@ public class Testa {
 		int value;
 
 		do {
-			value = Integer.parseInt(JOptionPane.showInputDialog("Digite:\n 1 para cadastrar \n 2 para buscar"));
+			value = Integer
+					.parseInt(JOptionPane.showInputDialog("Digite:\n1 para cadastrar \n2 para buscar \n0 para sair"));
 
 			switch (value) {
 			case 1:
-				System.out.println("Entrou no metodo cadastrar");
 				new Testa().cadastrar();
 				break;
 			case 2:
-				System.out.println("Entrou no metodo buscar");
 				new Testa().buscar();
 			default:
 				JOptionPane.showMessageDialog(null, "FIM!");
@@ -59,7 +58,5 @@ public class Testa {
 
 		JOptionPane.showMessageDialog(null, builder);
 		System.out.println(pessoa);
-
 	}
-
 }
