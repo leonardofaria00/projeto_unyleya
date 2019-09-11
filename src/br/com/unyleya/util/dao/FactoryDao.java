@@ -1,10 +1,12 @@
 package br.com.unyleya.util.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 
 import br.com.unyleya.modelo.Pessoa;
 
-public class FactoryDAO {
+public class FactoryDao {
 
 	EntityManager em = new JPAUtil().getEntityManager();
 
@@ -28,6 +30,11 @@ public class FactoryDAO {
 
 	public Pessoa listaPessoaPorId(int id) {
 		return em.find(Pessoa.class, id);
+	}
+
+	public List<Pessoa> findAll() {
+		System.out.println("Listando todas as Pessoas");
+		return em.createQuery("SELECT p FROM pessoa p WHERE status=1 ORDER BY id", Pessoa.class).getResultList();
 	}
 
 }

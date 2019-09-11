@@ -1,19 +1,26 @@
 package br.com.unyleya.controller;
 
+import java.util.List;
+
 import br.com.unyleya.modelo.Pessoa;
-import br.com.unyleya.util.dao.FactoryDAO;
+import br.com.unyleya.util.dao.FactoryDao;
 
 public class PessoaController {
 
-	FactoryDAO dao = new FactoryDAO();
+	FactoryDao factory = new FactoryDao();
 
 	public void salvar(Pessoa p) {
 		if (p.getNome() != null && p.getNome() != "")
-			dao.salvar(p);
+			factory.salvar(p);
 	}
 
 	public Pessoa listaPessoaPorId(int id) {
-		return dao.listaPessoaPorId(id);
+		return factory.listaPessoaPorId(id);
+	}
+
+	public List<Pessoa> listaTodos() {
+		List<Pessoa> list = factory.findAll();
+		return list;
 	}
 
 }
