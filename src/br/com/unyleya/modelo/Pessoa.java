@@ -84,6 +84,11 @@ public class Pessoa implements Serializable {
 		pessoa.setEndereco(endereco);
 
 		PessoaController controller = new PessoaController();
+
+		if (pessoa.getNome().isEmpty() || pessoa.getEndereco().isEmpty()) {
+			JOptionPane.showMessageDialog(null, "Dados invalidos!");
+			return;
+		}
 		controller.salvar(pessoa);
 	}
 
@@ -93,6 +98,11 @@ public class Pessoa implements Serializable {
 
 		PessoaController controller = new PessoaController();
 		Pessoa pessoa = controller.listaPessoaPorId(id);
+
+		if (pessoa == null) {
+			JOptionPane.showMessageDialog(null, "Id não encontrado. \nInforme um ID válido!");
+			return;
+		}
 
 		StringBuilder builder = new StringBuilder();
 		builder.append("ID: " + pessoa.getId());
@@ -108,6 +118,11 @@ public class Pessoa implements Serializable {
 		PessoaController controller = new PessoaController();
 		List<Pessoa> pessoas = controller.listaTodos();
 
+		if (pessoas.size() == 0) {
+			JOptionPane.showMessageDialog(null, "Não existe Pessoa cadastrada.");
+			return;
+		}
+
 		StringBuilder builder = new StringBuilder();
 		for (Pessoa p : pessoas) {
 			builder.append("ID: " + p.getId());
@@ -115,7 +130,7 @@ public class Pessoa implements Serializable {
 			builder.append("\nIdade: " + p.getIdade() + " anos");
 			builder.append("\nEndereço: " + p.getEndereco());
 
-			builder.append("\n----------------------------------\n");
+			builder.append("\n---------------------------------------\n");
 		}
 		JOptionPane.showMessageDialog(null, builder);
 

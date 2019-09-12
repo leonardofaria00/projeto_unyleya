@@ -10,8 +10,7 @@ public class PessoaController {
 	FactoryDao factory = new FactoryDao();
 
 	public void salvar(Pessoa p) {
-		if (p.getNome() != null && p.getNome() != "")
-			factory.salvar(p);
+		factory.salvar(p);
 	}
 
 	public Pessoa listaPessoaPorId(int id) {
