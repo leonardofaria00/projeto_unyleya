@@ -74,22 +74,27 @@ public class Pessoa implements Serializable {
 	}
 
 	public void cadastrar() {
-		String nome = JOptionPane.showInputDialog("Informe seu Nome:");
-		int idade = Integer.parseInt(JOptionPane.showInputDialog("Informe sua Idade:"));
-		String endereco = JOptionPane.showInputDialog("Informe seu Endereço:");
+		try {
 
-		Pessoa pessoa = new Pessoa();
-		pessoa.setNome(nome);
-		pessoa.setIdade(idade);
-		pessoa.setEndereco(endereco);
+			String nome = JOptionPane.showInputDialog("Informe seu Nome:");
+			int idade = Integer.parseInt(JOptionPane.showInputDialog("Informe sua Idade:"));
+			String endereco = JOptionPane.showInputDialog("Informe seu Endereço:");
 
-		PessoaController controller = new PessoaController();
+			Pessoa pessoa = new Pessoa();
+			pessoa.setNome(nome);
+			pessoa.setIdade(idade);
+			pessoa.setEndereco(endereco);
 
-		if (pessoa.getNome().isEmpty() || pessoa.getEndereco().isEmpty()) {
-			JOptionPane.showMessageDialog(null, "Dados invalidos!");
-			return;
+			PessoaController controller = new PessoaController();
+
+			if (pessoa.getNome().isEmpty() || pessoa.getEndereco().isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Dados invalidos!");
+				return;
+			}
+			controller.salvar(pessoa);
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Valores informados não são aceitos!");
 		}
-		controller.salvar(pessoa);
 	}
 
 	public void listaPorId() {
