@@ -125,12 +125,11 @@ public class Pessoa implements Serializable {
 
 		StringBuilder builder = new StringBuilder();
 		for (Pessoa p : pessoas) {
+			builder.append("\n---------------------------------------\n");
 			builder.append("ID: " + p.getId());
 			builder.append("\nNome: " + p.getNome());
 			builder.append("\nIdade: " + p.getIdade() + " anos");
 			builder.append("\nEndereço: " + p.getEndereco());
-
-			builder.append("\n---------------------------------------\n");
 		}
 		JOptionPane.showMessageDialog(null, builder);
 
